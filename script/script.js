@@ -15,36 +15,39 @@ function main(){
 }
 
 function calculateWye(){
-    RA = parseFloat(document.getElementById('ra-insert').value)
-    RB = parseFloat(document.getElementById('rb-insert').value)
-    RC = parseFloat(document.getElementById('rc-insert').value)
-    R1 = (RB*RC)/(RA+RB+RC)
-    R2 = (RA*RC)/(RA+RB+RC)
-    R3 = (RA*RB)/(RA+RB+RC)
+    RA = math.evaluate(document.getElementById('ra-insert').value)
+    RB = math.evaluate(document.getElementById('rb-insert').value)
+    RC = math.evaluate(document.getElementById('rc-insert').value)
+    R1 = math.divide(math.multiply(RB,RC),math.add(math.add(RA,RB),RC))
+    R2 = math.divide(math.multiply(RA,RC),math.add(math.add(RA,RB),RC))
+    R3 = math.divide(math.multiply(RA,RB),math.add(math.add(RA,RB),RC))
+    console.log(RA)
+    console.log(R1)
     if (Number.isNaN(R1)){
         incomplete()
     }
     else{
-        r1.textContent = "R1 = " + R1
-        r2.textContent = "R2 = " + R2
-        r3.textContent = "R3 = " + R3
+        r1.textContent = R1
+        r2.textContent = R2
+        r3.textContent = R3
     }
 }
 
 function calculateDelta(){
-    R1 = parseFloat(document.getElementById('r1-insert').value)
-    R2 = parseFloat(document.getElementById('r2-insert').value)
-    R3 = parseFloat(document.getElementById('r3-insert').value)
-    RA = (R1*R2+R2*R3+R3*R1)/R1
-    RB = (R1*R2+R2*R3+R3*R1)/R2
-    RC = (R1*R2+R2*R3+R3*R1)/R3
+    R1 = math.evaluate(document.getElementById('r1-insert').value)
+    R2 = math.evaluate(document.getElementById('r2-insert').value)
+    R3 = math.evaluate(document.getElementById('r3-insert').value)
+    Ru = math.add(math.add(math.multiply(R1,R2),math.multiply(R3,R2)),math.multiply(R1,R3))
+    RA = math.divide(Ru,R1)
+    RB = math.divide(Ru,R2)
+    RC = math.divide(Ru,R3)
     if (Number.isNaN(RA)){
         incomplete()
     }
     else{
-        ra.textContent = "R1 = " + RA
-        rb.textContent = "R2 = " + RB
-        rc.textContent = "R3 = " + RC
+        ra.textContent = RA
+        rb.textContent = RB
+        rc.textContent = RC
     }
 }
 
