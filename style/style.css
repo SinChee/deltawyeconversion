@@ -1,0 +1,8 @@
+.insertForm{
+    margin: 10px 10px 10px 10px;
+}
+
+.center{
+    display: flex;
+    justify-content: center;
+}
